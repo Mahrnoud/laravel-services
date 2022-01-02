@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
 use App\Services\Products\ProductIndexService;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -17,7 +16,7 @@ class IndexController extends Controller
         $this->productIndexService = new ProductIndexService();
     }
 
-    public function __invoke(Request $request) :object
+    public function __invoke() :object
     {
         return $this->productIndexService->loadProducts();
     }

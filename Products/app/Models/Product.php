@@ -29,4 +29,19 @@ class Product extends Model
         return $this->latest('created_at')->get();
     }
 
+    public function getProduct(int $id) :object
+    {
+        return $this->find($id);
+    }
+
+    public function updateProduct(array $request, int $id) : bool
+    {
+        return $this->find($id)->update($request);
+    }
+
+    public function deleteProduct(int $id) : bool
+    {
+        return $this->find($id)->delete();
+    }
+
 }

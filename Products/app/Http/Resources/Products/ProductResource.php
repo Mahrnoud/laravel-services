@@ -14,12 +14,16 @@ class ProductResource extends JsonResource
 
             'id' => $this->id,
             'attributes' => [
+
                 'product' => $this->product,
                 'description' => $this->description
             ],
             'relationships' => [],
             'links' => [
-                'productLink' => route('products:show', $this->id)
+
+                'productLink' => route('products:show', $this->id),
+                'productUpdate' => route('products:update', $this->id),
+                'productDelete' => route('products:delete', $this->id)
             ]
         ];
     }

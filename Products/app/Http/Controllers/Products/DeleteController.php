@@ -4,12 +4,27 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Services\Products\ProductDeleteService;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Request $request)
+
+    private ProductDeleteService $productDeleteService;
+
+    public function __construct()
     {
-        //
+        $this->productDeleteService = new ProductDeleteService();
+    }
+
+    public function __invoke(int $id) :object
+    {
+        $deletedProduct = $this->productDeleteService->delete($id);
+
+        if($deletedProduct){
+
+            return response(['message' => 'Deleted successfully!'], 200);
+        }
+
+        return response(['message' => 'Error while delete product!'], 301);
     }
 }
