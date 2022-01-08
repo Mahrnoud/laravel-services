@@ -14,7 +14,7 @@ class ProductDeleteService
         $this->product = new Product();
     }
 
-    public function delete(int $id) :bool
+    public function delete(int $id) :int
     {
         return $this->product->deleteProduct($id);
     }

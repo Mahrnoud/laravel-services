@@ -18,7 +18,7 @@ class UpdateController extends Controller
 
     public function __invoke(UpdateProductRequest $updateProductRequest, int $id) :object
     {
-        $updatedProduct = $this->productUpdateService->update($updateProductRequest->all(), $id);
+        $updatedProduct = $this->productUpdateService->update($updateProductRequest->validated(), $id);
 
         if($updatedProduct){
 

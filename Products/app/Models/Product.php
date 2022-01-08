@@ -19,9 +19,9 @@ class Product extends Model
         'product', 'description', 'image', 'image_thumbnail'
     ];
 
-    public function storeProduct(object $request) :int
+    public function storeProduct(array $request) :int
     {
-        return $this->create($request->all())->id;
+        return $this->create($request)->id;
     }
 
     public function getProducts() :object
@@ -29,19 +29,29 @@ class Product extends Model
         return $this->latest('created_at')->get();
     }
 
-    public function getProduct(int $id) :object
+    public function findProduct(int $id) :object
     {
-        return $this->find($id);
+        return $this->findOrFail($id);
     }
 
-    public function updateProduct(array $request, int $id) : bool
+    public function updateProduct(array $request, int $id) : int
     {
-        return $this->find($id)->update($request);
+        return $this->where('id', $id)->update($request);
     }
 
-    public function deleteProduct(int $id) : bool
+    public function deleteProduct(int $id) : int
     {
-        return $this->find($id)->delete();
+        return $this->where('id', $id)->delete();
+    }
+
+    public function getTrashed() :object
+    {
+        return $this->onlyTrashed()->latest('created_at')->get();
+    }
+
+    public function findTrashed(int $id) :object
+    {
+        return $this->onlyTrashed()->findOrFail($id);
     }
 
 }

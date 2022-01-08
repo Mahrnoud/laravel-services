@@ -14,7 +14,7 @@ class ProductUpdateService
         $this->product = new Product();
     }
 
-    public function update(array $request, int $id) : bool
+    public function update(array $request, int $id) : int
     {
         return $this->product->updateProduct($request, $id);
     }

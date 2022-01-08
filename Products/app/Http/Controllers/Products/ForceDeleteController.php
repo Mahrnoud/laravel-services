@@ -4,27 +4,26 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
-use App\Services\Products\ProductDeleteService;
+use App\Services\Products\ProductForceDeleteService;
 
-class DeleteController extends Controller
+class ForceDeleteController extends Controller
 {
 
-    private ProductDeleteService $productDeleteService;
+    private ProductForceDeleteService $productForceDeleteService;
 
     public function __construct()
     {
-        $this->productDeleteService = new ProductDeleteService();
+        $this->productForceDeleteService = new ProductForceDeleteService();
     }
 
     public function __invoke(int $id) :object
     {
-        $deletedProduct = $this->productDeleteService->delete($id);
+        $delete = $this->productForceDeleteService->forceDelete($id);
 
-        if($deletedProduct){
+        if($delete){
 
             return response(['message' => 'Deleted successfully!'], 200);
         }
-
         return response(['message' => 'Error while delete product!'], 204);
     }
 }

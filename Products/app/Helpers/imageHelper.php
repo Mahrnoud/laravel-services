@@ -19,3 +19,12 @@ function imageUpload(string $path, object $image) :array
         'imageThumbnail' => $imageNewName
     ];
 }
+
+function imageUnlink(string $path, string $image)
+{
+    // unlink image
+    @unlink($path.'/'.$image);
+
+    // unlink image thumbnails
+    @unlink($path.'/thumbnails/'.$image);
+}

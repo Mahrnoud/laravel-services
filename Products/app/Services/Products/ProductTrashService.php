@@ -1,13 +1,13 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Services\Products;
 
 use App\Http\Resources\Products\ProductResource;
 use App\Models\Product;
 
-class ProductShowService
+class ProductTrashService
 {
+
     private Product $product;
 
     public function __construct()
@@ -15,8 +15,8 @@ class ProductShowService
         $this->product = new Product();
     }
 
-    public function loadProduct(int $id) :object
+    public function getTrashed() :object
     {
-        return new ProductResource($this->product->findProduct($id));
+        return ProductResource::collection($this->product->getTrashed());
     }
 }

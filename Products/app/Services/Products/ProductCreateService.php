@@ -28,15 +28,15 @@ class ProductCreateService
          *      return array('image' => 'bird.png', 'thumbnail' => 'bird-thumbnail.png')
          *
          */
-        if ($request->image){
+        if ($request->picture){
 
-            $uploadedImages = imageUpload(public_path('images/product'), $request->image);
+            $uploadedImages = imageUpload(public_path('images/product'), $request->picture);
 
             // request offset ( image and image-thumbnail ) new value
             $request->offsetSet('image', $uploadedImages['image']);
             $request->offsetSet('image_thumbnail', $uploadedImages['imageThumbnail']);
         }
 
-        return $this->product->storeProduct($request);
+        return $this->product->storeProduct($request->only(['product', 'description', 'image', 'image_thumbnail']));
     }
 }

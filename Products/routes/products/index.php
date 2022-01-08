@@ -31,5 +31,14 @@ Route::group(
 
         // delete by id
         Route::delete('/{id}', DeleteController::class)->name('delete');
+
+        // get trash
+        Route::get('/trash/all', TrashController::class)->name('trash');
+
+        // restore by id
+        Route::patch('/restore/{id}', RestoreDeletedController::class)->name('restore');
+
+        // delete permanently by id
+        Route::delete('/permanently/{id}', ForceDeleteController::class)->name('delete_permanently');
     }
 );
