@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Services\Products;
 
-
 use App\Http\Resources\Products\ProductResource;
 use App\Models\Product;
 

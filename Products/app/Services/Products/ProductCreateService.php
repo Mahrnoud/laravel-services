@@ -21,7 +21,7 @@ class ProductCreateService
         /**
          * Product Image
          *
-         *  check if request has image
+         *  check if request has picture
          *      create image thumbnail ( optional )
          *          - here if you want to generate image-thumbnail you can use (intervention/image) package
          *      upload image and image thumbnails

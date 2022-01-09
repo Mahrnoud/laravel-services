@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Products\UpdateProductRequest;
+use App\Http\Requests\Products\ProductUpdateRequest;
 use App\Services\Products\ProductUpdateService;
 
 class UpdateController extends Controller
@@ -16,9 +16,9 @@ class UpdateController extends Controller
         $this->productUpdateService = new ProductUpdateService();
     }
 
-    public function __invoke(UpdateProductRequest $updateProductRequest, int $id) :object
+    public function __invoke(ProductUpdateRequest $productUpdateRequest, int $id) :object
     {
-        $updatedProduct = $this->productUpdateService->update($updateProductRequest->validated(), $id);
+        $updatedProduct = $this->productUpdateService->update($productUpdateRequest->validated(), $id);
 
         if($updatedProduct){
 
