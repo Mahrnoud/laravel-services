@@ -42,7 +42,7 @@ class CategoryTest extends TestCase
     {
         return $this->get('/api/categories/'.$id)
             ->assertStatus(200)
-            ->assertJsonPath('id', $id)
+            ->assertJsonPath('data.id', $id)
             ->original['image'];
     }
 

@@ -43,7 +43,7 @@ class ProductTest extends TestCase
     {
         return $this->get('/api/products/'.$id)
             ->assertStatus(200)
-            ->assertJsonPath('id', $id)
+            ->assertJsonPath('data.id', $id)
             ->original['image'];
     }
 

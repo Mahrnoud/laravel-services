@@ -1,6 +1,14 @@
 <?php
 declare(strict_types=1);
 
+use App\Http\Controllers\Products\CreateController;
+use App\Http\Controllers\Products\DeleteController;
+use App\Http\Controllers\Products\ForceDeleteController;
+use App\Http\Controllers\Products\IndexController;
+use App\Http\Controllers\Products\RestoreDeletedController;
+use App\Http\Controllers\Products\ShowController;
+use App\Http\Controllers\Products\TrashController;
+use App\Http\Controllers\Products\UpdateController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -11,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(
     [
-        'namespace' => 'Products',
         'prefix' => '/products',
         'as' => 'products:'
     ],

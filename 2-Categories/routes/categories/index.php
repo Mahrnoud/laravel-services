@@ -1,6 +1,14 @@
 <?php
 declare(strict_types=1);
 
+use App\Http\Controllers\Categories\CreateController;
+use App\Http\Controllers\Categories\DeleteController;
+use App\Http\Controllers\Categories\ForceDeleteController;
+use App\Http\Controllers\Categories\IndexController;
+use App\Http\Controllers\Categories\RestoreDeletedController;
+use App\Http\Controllers\Categories\ShowController;
+use App\Http\Controllers\Categories\TrashController;
+use App\Http\Controllers\Categories\UpdateController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -11,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(
     [
-        'namespace' => 'Categories',
         'prefix' => '/categories',
         'as' => 'categories:'
     ],
